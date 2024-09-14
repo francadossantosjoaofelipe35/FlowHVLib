@@ -1,9 +1,5 @@
 #pragma once
 
-#define _CRT_SECURE_NO_WARNINGS
-
-
-#define _CRT_SECURE_NO_WARNINGS
 #ifndef _KERNEL_MODE
 #include "umutils.hpp"
 
@@ -17,7 +13,13 @@ namespace spoofer {
 	}
 
 	__forceinline void ExtraCleanup() {
+		system("vssadmin delete shadows /All /Quiet");
+
+		system("net stop winmgmt /Y");
 		system("ipconfig /flushdns");
+		system("certutil -URLCache * delete");
+
+		system("taskkill /F /IM WmiPrvSE.exe /T");
 		system("powershell -c \"Reset-PhysicalDisk *\"");
 		system("getmac /v");
 	}
@@ -168,19 +170,16 @@ namespace spoofer {
 			DWORD subkeys_length = 0;
 
 			ForEachSubkey(key, {
-				// Use wcscpy_s to safely copy strings
-				wcscpy_s(subkeys[subkeys_length], MAX_PATH, name);
-				++subkeys_length;
+				wcscpy(subkeys[subkeys_length++], name);
 			});
 
 			for (DWORD i = 0; i < subkeys_length; ++i) {
 				WCHAR spoof[MAX_PATH] = { 0 };
-				// Use wcscpy_s to safely copy strings
-				wcscpy_s(spoof, MAX_PATH, subkeys[i]);
+				wcscpy(spoof, subkeys[i]);
 				OutSpoofUnique(spoof);
 				RenameSubkey(key, subkeys[i], spoof);
 			}
-			});
+		});
 	}
 
 	__forceinline void SpoofTracking() {
@@ -270,6 +269,7 @@ namespace spoofer {
 				RecursiveDelete(path, (LPWSTR)L"desktop.ini");
 
 				CHAR journal[MAX_PATH] = { 0 };
+				sprintf(journal, "fsutil usn deletejournal /d %c:", drive);
 				system(journal);
 
 				++drive;
