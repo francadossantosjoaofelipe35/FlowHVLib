@@ -83,7 +83,7 @@ jobs:
         runVcpkgInstall : true
         vcpkgGitCommitId: '3426db05b996481ca31e95fff3734cf23e0f51bc'
         vcpkgDirectory: '${{ github.workspace }}/vcpkg'
-        vcpkgJsonGlob: 'D:/a/SKLib/SKLib/vcpkg.json'
+        vcpkgJsonGlob: 'D:/a/FlowHVLib/FlowHVLib/vcpkg.json'
         runVcpkgFormatString:  '[`install`, `--recurse`, `--clean-after-build`, `--x-install-root`, `$[env.VCPKG_INSTALLED_DIR]`, `--feature-flags`, `manifests,versions`]'
         
     # Restore vcpkg from the GitHub Action cache service. Note that packages are restored by vcpkg's binary caching
@@ -152,7 +152,7 @@ jobs:
       if: env.matches == 'true'
       with:
         files: |
-          SKLib.tar.gz
+          FlowHVLib.tar.gz
         token: ${{ secrets.GITHUB_TOKEN }}
         tag_name: ${{ env.commit_subject }}
         body: ${{ env.commit_body }}
