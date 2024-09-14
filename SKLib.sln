@@ -9,12 +9,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pdbparser", "Pdbparser\Pdbp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "physmeme_lib", "phymeme_lib\physmeme_lib.vcxproj", "{13FFA531-AD46-46F8-B52D-4A01BA078034}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SKLib-v", "SKLib-v\SKLib-v.vcxproj", "{64D50B5F-55D6-4F58-B6A8-0BF0D40B1500}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SKLib-v", "FlowHVLib-v\SKLib-v.vcxproj", "{64D50B5F-55D6-4F58-B6A8-0BF0D40B1500}"
 	ProjectSection(ProjectDependencies) = postProject
 		{780FD52C-B046-4AFF-95F9-F6778247D26E} = {780FD52C-B046-4AFF-95F9-F6778247D26E}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SKLib", "SKLib\SKLib.vcxproj", "{780FD52C-B046-4AFF-95F9-F6778247D26E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SKLib", "FlowHVLib\SKLib.vcxproj", "{780FD52C-B046-4AFF-95F9-F6778247D26E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
